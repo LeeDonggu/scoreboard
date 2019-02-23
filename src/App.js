@@ -29,6 +29,7 @@ class App extends React.Component {
         return player;
       }
     });
+
     this.setState({players: this.state.players});
   };
 
