@@ -34,11 +34,19 @@ class App extends React.Component {
     this.setState({players: this.state.players});
   };
 
-  onSubmit(e) {
-    e.preventDefault();
+  handleAddPlayer = (name) => {
+    this.setState(prevState => {
+      let maxId = 0;
+      this.state.players.forEach((item) => item.id > maxId ? (maxId = item.id) : (maxId = maxId));
 
-
-  }
+      return {
+        players: [
+          ...prevState.players,
+          {id: maxId + 1, name, score: 0}
+        ]
+      }
+    })
+  };
 
   render() {
     return (
@@ -59,7 +67,7 @@ class App extends React.Component {
           )
         }
 
-        <AddPlayerForm onSubmit={this.onSubmit}/>
+        <AddPlayerForm addPlayer={this.handleAddPlayer}/>
       </div>
     );
   }
