@@ -14,4 +14,4 @@ export const Player = (props) => {
       <Counter {...props}/>
     </div>
   );
-}
+};
