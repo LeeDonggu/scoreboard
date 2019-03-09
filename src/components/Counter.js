@@ -1,7 +1,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import {changeScore} from "../redux/actions";
+import {connect} from "react-redux";
 
-export class Counter extends React.Component {
+class Counter extends React.Component {
   constructor(props) {
     super(props);
   }
@@ -25,3 +27,19 @@ Counter.propTypes = {
   index: PropTypes.number,
   score: PropTypes.number,
 };
+
+// let mapStateToProps = (state) => {
+//   return {
+//     score: state.playerReducer.players.score,
+//     index: state.playerReducer.players.id
+//   };
+// };
+
+// action을 dispatch하는 펑션을 props로 매핑
+let mapActionToProps = (dispatch) => {
+  return {
+    changeScore: (index, score) => dispatch(changeScore(index, score)),
+  };
+};
+
+export default connect(null, mapActionToProps)(Counter);

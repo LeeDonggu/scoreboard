@@ -1,5 +1,5 @@
 import {combineReducers, createStore} from "redux";
-import {ADD_PLAYER, UPDATE_TITLE} from "./actionTypes";
+import {ADD_PLAYER, CHANGE_SCORE, UPDATE_TITLE} from "./actionTypes";
 
 const playerInitialState = {
   title: 'STORE SCOREBOARD',
@@ -27,7 +27,21 @@ const playerReducer = (state = playerInitialState, action) => {
         players: [
           ...state.players,
           {name: action.name, score: 0, id: maxId + 1}
-        ],
+        ]
+      };
+    case CHANGE_SCORE:
+      // 2가지 모두 동일한 방법
+      // state.players.forEach(item => {
+      //   if (item.id === action.index) {
+      //     item.score += action.score
+      //   }
+      // });
+      state.players.forEach((item) => item.id === action.index ? (item.score += action.score) : '');
+      return {
+        ...state,
+        players: [
+          ...state.players
+        ]
       };
     default :
       return state;

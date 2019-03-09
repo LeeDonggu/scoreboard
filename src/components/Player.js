@@ -1,11 +1,11 @@
 import React from 'react';
-import {Counter} from "./Counter";
+import Counter from "./Counter";
 
 export class Player extends React.Component {
 
   render() {
     console.log(this.props);
-    const {removePlayer, id, name} = this.props;
+    const {removePlayer, id, name, score} = this.props;
     return (
       <div className="player">
     <span className="player-name">
@@ -14,7 +14,7 @@ export class Player extends React.Component {
         <span className="player-name">
         {name}
       </span>
-        <Counter {...this.props}/>
+        <Counter index={id} score={score}/>
       </div>
     );
   }
