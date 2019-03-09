@@ -1,5 +1,5 @@
 import React from 'react';
-import {Statistics} from "./Statistics";
+import Statistics from "./Statistics";
 import {Stopwatch} from "./Stopwatch";
 import PropTypes from 'prop-types';
 import {connect} from "react-redux";
@@ -10,7 +10,7 @@ const Header = ({players, title2, changeTitle}) => {
   return (
     <header>
       <Statistics players={players}/>
-      <h1 onClick={changeTitle}>{title2}</h1>
+      <h1 onClick={() => changeTitle('test scoreboard')}>{title2}</h1>
       <Stopwatch/>
     </header>
   );
@@ -34,7 +34,7 @@ let mapStateToProps = (state) => {
 // action을 dispatch하는 펑션을 props로 매핑
 let mapActionToProps = (dispatch) => {
   return {
-    changeTitle: () => dispatch(updateTitle('test scoreboard')),
+    changeTitle: (title) => dispatch(updateTitle(title)),
   };
 };
 
