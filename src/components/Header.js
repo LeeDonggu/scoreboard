@@ -2,13 +2,15 @@ import React from 'react';
 import {Statistics} from "./Statistics";
 import {Stopwatch} from "./Stopwatch";
 import PropTypes from 'prop-types';
+import {connect} from "react-redux";
+import {updateTitle} from "../redux/actions";
 
-export const Header = ({players, title}) => {
+const Header = ({players, title2, updateTitle}) => {
   // const {players, title} = props;
   return (
     <header>
       <Statistics players={players}/>
-      <h1>{title}</h1>
+      <h1 onClick={updateTitle}>{title2}</h1>
       <Stopwatch/>
     </header>
   );
@@ -16,9 +18,24 @@ export const Header = ({players, title}) => {
 
 Header.propTypes = {
   players: PropTypes.string,
-  title: PropTypes.string,
+  title2: PropTypes.string,
 };
 
 Header.defaultProps = {
-  title: 'Scoreboard'
+  title2: 'Scoreboard'
 };
+
+let mapStateToProps = (state) => {
+  return {
+    title2: state.playerReducer.title
+  }
+};
+
+// action을 dispatch하는 펑션을 props로 매핑
+// let mapActionToProps = (dispatch) => {
+//   return {
+//     changeTitle: () => dispatch(updateTitle('test scoreboard')),
+//   };
+// };
+
+export default connect(mapStateToProps, updateTitle('test scoreboard'))(Header);
