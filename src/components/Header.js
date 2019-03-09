@@ -5,12 +5,12 @@ import PropTypes from 'prop-types';
 import {connect} from "react-redux";
 import {updateTitle} from "../redux/actions";
 
-const Header = ({players, title2, updateTitle}) => {
+const Header = ({players, title2, changeTitle}) => {
   // const {players, title} = props;
   return (
     <header>
       <Statistics players={players}/>
-      <h1 onClick={updateTitle}>{title2}</h1>
+      <h1 onClick={changeTitle}>{title2}</h1>
       <Stopwatch/>
     </header>
   );
@@ -32,10 +32,10 @@ let mapStateToProps = (state) => {
 };
 
 // action을 dispatch하는 펑션을 props로 매핑
-// let mapActionToProps = (dispatch) => {
-//   return {
-//     changeTitle: () => dispatch(updateTitle('test scoreboard')),
-//   };
-// };
+let mapActionToProps = (dispatch) => {
+  return {
+    changeTitle: () => dispatch(updateTitle('test scoreboard')),
+  };
+};
 
-export default connect(mapStateToProps, updateTitle('test scoreboard'))(Header);
+export default connect(mapStateToProps, mapActionToProps)(Header);
