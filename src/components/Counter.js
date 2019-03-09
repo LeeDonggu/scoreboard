@@ -28,13 +28,6 @@ Counter.propTypes = {
   score: PropTypes.number,
 };
 
-// let mapStateToProps = (state) => {
-//   return {
-//     score: state.playerReducer.players.score,
-//     index: state.playerReducer.players.id
-//   };
-// };
-
 // action을 dispatch하는 펑션을 props로 매핑
 let mapActionToProps = (dispatch) => {
   return {

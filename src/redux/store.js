@@ -1,5 +1,5 @@
 import {combineReducers, createStore} from "redux";
-import {ADD_PLAYER, CHANGE_SCORE, UPDATE_TITLE} from "./actionTypes";
+import {ADD_PLAYER, CHANGE_SCORE, REMOVE_PLAYER, UPDATE_TITLE} from "./actionTypes";
 
 const playerInitialState = {
   title: 'STORE SCOREBOARD',
@@ -21,7 +21,7 @@ const playerReducer = (state = playerInitialState, action) => {
       };
     case ADD_PLAYER:
       let maxId = 0;
-      state.players.forEach((item) => item.id > maxId ? (maxId = item.id) : (maxId = maxId));
+      state.players.forEach((player) => player.id > maxId ? (maxId = player.id) : (maxId = maxId));
       return {
         ...state,
         players: [
@@ -36,12 +36,17 @@ const playerReducer = (state = playerInitialState, action) => {
       //     item.score += action.score
       //   }
       // });
-      state.players.forEach((item) => item.id === action.index ? (item.score += action.score) : '');
+      state.players.forEach((player) => player.id === action.index ? (player.score += action.score) : '');
       return {
         ...state,
         players: [
           ...state.players
         ]
+      };
+    case REMOVE_PLAYER:
+      return {
+        ...state,
+        players: state.players.filter(player => player.id !== action.id)
       };
     default :
       return state;

@@ -33,7 +33,7 @@ class AddPlayerForm extends React.Component {
   render() {
     return (
       <form onSubmit={this.handleSubmit}>
-        <input type="text" placeholder="enter a player's name" ref={this.textInput} />
+        <input type="text" placeholder="enter a player's name" ref={this.textInput}/>
         {/*<input type="text" placeholder="enter a player's name" value={this.state.playerName}
                onChange={this.handleValueChange}/>*/}
         <input type="submit" value="Add Player"/>
