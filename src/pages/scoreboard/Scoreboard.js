@@ -1,16 +1,11 @@
 import React from 'react';
-import './App.css';
-import Header from "./components/Header";
-import Player from "./components/Player";
-import AddPlayerForm from "./components/AddPlayerForm";
+import './Scoreboard.css';
+import Header from "../../components/Header";
+import Player from "../../components/Player";
+import AddPlayerForm from "../../components/AddPlayerForm";
 import {connect} from "react-redux";
 
-
-class App extends React.Component {
-  /*handleRemovePlayer = (id) => {
-    this.setState(prevState => ({players: prevState.players.filter(item => item.id !== id)}))
-  };*/
-
+class Scoreboard extends React.Component {
   render() {
     return (
       <div className="scoreboard">
@@ -40,5 +35,5 @@ let mapStateToProps = (state) => {
   };
 };
 
-export default connect(mapStateToProps)(App);
+export default connect(mapStateToProps)(Scoreboard);
 

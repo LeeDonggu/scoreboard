@@ -4,12 +4,8 @@ import {changeScore} from "../redux/actions";
 import {connect} from "react-redux";
 
 class Counter extends React.Component {
-  constructor(props) {
-    super(props);
-  }
 
   render() {
-
     const {changeScore, index, score} = this.props;
 
     return (

@@ -21,7 +21,7 @@ const playerReducer = (state = playerInitialState, action) => {
       };
     case ADD_PLAYER:
       let maxId = 0;
-      state.players.forEach((player) => player.id > maxId ? (maxId = player.id) : (maxId = maxId));
+      state.players.forEach((player) => player.id > maxId ? (maxId = player.id) : '');
       return {
         ...state,
         players: [

@@ -1,6 +1,6 @@
 import React from 'react';
 import {connect} from "react-redux";
-import {addPlayer, updateTitle} from "../redux/actions";
+import {addPlayer} from "../redux/actions";
 
 class AddPlayerForm extends React.Component {
   // DOM에 접근하기 위한 참조값
@@ -11,9 +11,9 @@ class AddPlayerForm extends React.Component {
     this.state = {
       playerName: ''
     };
-
   }
 
+  // 입력값을 ref가 아닌 해당 방식으로도 저장 가능
   handleValueChange = (e) => {
     this.setState({playerName: e.target.value});
   };
@@ -22,11 +22,6 @@ class AddPlayerForm extends React.Component {
     // 페이지 리로딩 방지
     e.preventDefault();
     this.props.addPlayer(this.textInput.current.value);
-    // 부모에게 값 전달
-    // this.props.addPlayer(this.textInput.current.value);
-    // this.setState({
-    //   playerName: ''
-    // });
   };
 
 
@@ -34,8 +29,6 @@ class AddPlayerForm extends React.Component {
     return (
       <form onSubmit={this.handleSubmit}>
         <input type="text" placeholder="enter a player's name" ref={this.textInput}/>
-        {/*<input type="text" placeholder="enter a player's name" value={this.state.playerName}
-               onChange={this.handleValueChange}/>*/}
         <input type="submit" value="Add Player"/>
       </form>
 
